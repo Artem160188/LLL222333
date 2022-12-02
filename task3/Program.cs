@@ -1,22 +1,32 @@
-﻿/*Напишите программу, которая выводит на экран числа от 1 до 100. 
-При этом вместо чисел, кратных трем, программа должна выводить слово Fizz,
- а вместо чисел, кратных пяти — слово Buzz. Если число кратно пятнадцати, 
- то программа должна выводить слово FizzBuzz. Задача может показаться 
- очевидной, но нужно получить наиболее простое и красивое решение.*/
- 
- for (int N=1;N<=100;N++)
- if  (N % 15== 0)
+﻿/*Напишите программу, которая выводит третью цифру
+ заданного числа или сообщает, что третьей цифры нет.Через строку решать нельзя.
+645 -> 5
+78 -> третьей цифры нет
+32679 -> 6*/
+int number = ReadInt("Введите число: ");
+int count = number.ToString().Length;
+Console.Write(MakeArray(number, count));
+int ReadInt(string message)
 {
-     Console.WriteLine("FizzBuzz" );
+    Console.Write(message);
+    return Convert.ToInt32(Console.ReadLine());
 }
-else if  (N % 5== 0)
+int MakeArray(int a, int b)
 {
-     Console.WriteLine("Buzz" );
-}
-else if (N % 3==0)
-     Console.WriteLine("Fizz");
-else 
-     {
-       Console.WriteLine($"{N}");
-     }
+int result = 0;
+    if (b < 3)
+    {
+        Console.Write("Третьей цифры нет ");
+    }
+    else
+    {
+        int c = 1;
+        for (int i = b; i > 3; i--)
+        {
+            c = c * 10;
+        }
 
+        result = (a / c) % 10;
+    }
+return result;
+}
